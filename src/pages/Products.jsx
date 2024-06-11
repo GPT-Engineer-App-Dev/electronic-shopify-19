@@ -6,21 +6,21 @@ const products = [
   {
     id: 1,
     name: "Smartphone",
-    image: "smartphone.jpg",
+    image: "/images/smartphone.jpg",
     description: "A high-end smartphone with a sleek design and advanced features.",
     price: "$699"
   },
   {
     id: 2,
     name: "Laptop",
-    image: "laptop.jpg",
+    image: "/images/laptop.jpg",
     description: "A powerful laptop with a fast processor and plenty of storage.",
     price: "$999"
   },
   {
     id: 3,
     name: "Headphones",
-    image: "headphones.jpg",
+    image: "/images/headphones.jpg",
     description: "Noise-cancelling headphones with superior sound quality.",
     price: "$199"
   }
