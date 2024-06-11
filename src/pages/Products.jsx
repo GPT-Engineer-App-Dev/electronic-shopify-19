@@ -1,4 +1,6 @@
 import { Box, SimpleGrid, Image, Text, Heading, VStack } from "@chakra-ui/react";
+import { useState } from "react";
+import SearchBar from "../components/SearchBar.jsx";
 
 const products = [
   {
@@ -24,11 +26,19 @@ const products = [
   }
 ];
 
-const Products = () => (
-  <Box p={4}>
-    <Heading as="h1" size="xl" textAlign="center" mb={8}>Our Products</Heading>
-    <SimpleGrid columns={[1, null, 3]} spacing={8}>
-      {products.map(product => (
+const Products = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  
+  const filteredProducts = products.filter(product =>
+    product.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  return (
+    <Box p={4}>
+      <Heading as="h1" size="xl" textAlign="center" mb={8}>Our Products</Heading>
+      <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      <SimpleGrid columns={[1, null, 3]} spacing={8}>
+        {filteredProducts.map(product => (
         <Box key={product.id} borderWidth="1px" borderRadius="lg" overflow="hidden" p={4}>
           <Image src={product.image} alt={product.name} />
           <VStack mt={4} align="start">
@@ -38,8 +48,9 @@ const Products = () => (
           </VStack>
         </Box>
       ))}
-    </SimpleGrid>
-  </Box>
-);
+      </SimpleGrid>
+    </Box>
+  );
+};
 
 export default Products;
